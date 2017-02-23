@@ -50,8 +50,8 @@ const addHandlers = () => {
   $('#create-review').on('submit', onCreateReview);
   $('#show-reviews').on('click', onGetReviews);
   $('.review-show').on('click', '.review-delete', onRemoveReview);
-  $('.review-show').on('click', '.review-edit', openEditModal);
-  $('#editModal').on('submit', 'form.edit-review', onUpdatereview);
+  // $('.review-show').on('click', '.review-edit', openEditModal);
+  // $('#editModal').on('submit', 'form.edit-review', onUpdatereview);
 };
 
 module.exports = {
