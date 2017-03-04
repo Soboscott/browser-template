@@ -1,59 +1,71 @@
 'use strict';
-const getFormFields = require(`../../../lib/get-form-fields`);
-const api = require('./api');
-const ui = require('./ui');
-const store = require('../store');
 
-const onCreateReview = function (event) {
-  let data = getFormFields(event.target);
+const logApi = require('./api');
+const logUi = require('./ui');
+const getFormFields = require('../../../lib/get-form-fields');
+
+const onIndex = function (event) {
   event.preventDefault();
-  api.createReview(data)
-    .then((response) => {
-      store.review = response.review;
-      onGetReviews();
-    })
-    .then(ui.createReviewSuccess)
-    .catch(ui.createReviewFailure);
+  logApi.getIndex()
+    .then(logUi.indexSuccess)
+    .catch(logUi.failure);
 };
 
-const onGetReviews = function () {
-  api.getReviews()
-    .then((response) => {
-      store.reviews = response.reviews;
-      ui.getReviewSuccess();
-    })
-    .catch(ui.getReviewFailure);
-};
-
-const onUpdateReview = function (event) {
+const onCreate = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
-  api.updateReview(data)
-    .then(ui.UpdateReviewSuccess)
-    .then(() => {
-      onGetReviews();
-      $('#editModal').modal('hide');
-    })
-    .catch(ui.UpdateReviewFailure);
+  logApi.create(data)
+    .then(logUi.createSuccess)
+    .then(logApi.getIndex)
+    .then(logUi.indexSuccess)
+    .catch(logUi.createEntryFailure);
 };
 
-const onRemoveReview = function (event) {
-  let reviewId = $(this).data().reviewid;
+const onUpdate = function (event) {
   event.preventDefault();
-  api.removeReview(reviewId)
-    .then(ui.removeReviewSuccess)
-    .then(onGetReviews)
-    .catch(ui.removeReviewFailure);
+  let data = getFormFields(event.target);
+  let id = data.post.id;
+  logApi.update(id, data)
+    .then(logUi.updateSuccess)
+    .then(logApi.getIndex)
+    .then(logUi.indexSuccess)
+    .catch(logUi.updateEntryFailure);
 };
 
-const addHandlers = () => {
-  $('#create-review').on('submit', onCreateReview);
-  $('#show-reviews').on('click', onGetReviews);
-  $('.review-show').on('click', '.review-delete', onRemoveReview);
-  // $('.review-show').on('click', '.review-edit', openEditModal);
-  // $('#editModal').on('submit', 'form.edit-review', onUpdatereview);
+const onRemovePost = (event) => {
+  event.preventDefault();
+  let id = event.target.getAttribute('data-id');
+  logApi.destroy(id)
+    .then(logUi.removePostSuccess)
+    .then(logApi.getIndex)
+    .then(logUi.indexSuccess)
+    .catch(logUi.failure);
+};
+
+const unhideUpdate = () => {
+  $('#update-entry').removeClass('hidden');
+  $('#create-entry').addClass('hidden');
+};
+
+const hideUpdate = () => {
+  $('#status-box').text('Update Cancelled');
+  $('.create-entry-message').text('');
+  $('.update-entry-message').text('');
+  $('.update-field').val('');
+  $('#update-entry').addClass('hidden');
+  $('#create-entry').removeClass('hidden');
+};
+
+const addAjaxHandlers = () => {
+  $('#get-index-button').on('click', onIndex);
+  $('#create-entry').on('submit', onCreate);
+  $('#entry-container').on('click', '#removePost', onRemovePost);
+  $('#show-update-form').on('click', unhideUpdate);
+  $('#update-entry').on('submit', onUpdate);
+  $('#cancel-update').on('click', hideUpdate);
 };
 
 module.exports = {
-  addHandlers,
+  addAjaxHandlers,
+  onIndex,
 };

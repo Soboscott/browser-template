@@ -3,41 +3,41 @@
 const config = require('../config');
 const store = require('../store');
 
-const createReview = function (data) {
+const getIndex = function () {
   return $.ajax({
-    url: config.apiOrigin + '/reviews',
-    method: 'POST',
-    headers: {
-      "Authorization": `Token token=${store.user.token}`
-    },
-    data,
-  });
-};
-
-const getReviews = function () {
-  return $.ajax({
-    url: config.apiOrigin + '/reviews',
+    url: config.apiOrigin + '/posts',
     method: 'GET',
     headers: {
-      "Authorization": `Token token=${store.user.token}`
-    }
+      Authorization: `Token token=${store.user.token}`,
+    },
   });
 };
 
-const updateReview = function (data) {
+const create = function (data) {
   return $.ajax({
-    url: config.apiOrigin + '/reviews/' + data.review.id,
-    method: 'PATCH',
+    url: config.apiOrigin + '/posts',
+    method: 'POST',
     headers: {
-      "Authorization": `Token token=${store.user.token}`
+      Authorization: `Token token=${store.user.token}`,
     },
     data,
   });
 };
 
-const removeReview = function (id) {
+const update = function (id, data) {
   return $.ajax({
-    url: config.apiOrigin + '/reviews/' + id,
+    url: config.apiOrigin + '/posts/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+    data,
+  });
+};
+
+const destroy = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/posts/' + id,
     method: 'DELETE',
     headers: {
       Authorization: `Token token=${store.user.token}`,
@@ -46,8 +46,8 @@ const removeReview = function (id) {
 };
 
 module.exports = {
-  createReview,
-  getReviews,
-  updateReview,
-  removeReview,
+  getIndex,
+  create,
+  update,
+  destroy,
 };
