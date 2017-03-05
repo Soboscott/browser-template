@@ -47,7 +47,6 @@ const signInSuccess = () => {
   $('#create-entry').removeClass('hidden');
   $('#get-index-button').removeClass('hidden');
   $('#show-update-form').removeClass('hidden');
-  $('#carousel-animals').removeClass('hidden');
 };
 
 // On sign out, hide game board elements
@@ -63,7 +62,6 @@ const signOutSuccess = () => {
   $('#get-index-button').addClass('hidden');
   $('#show-update-form').addClass('hidden');
   $('#entry-container').html('');
-  $('#carousel-animals').addClass('hidden');
 };
 
 module.exports = {

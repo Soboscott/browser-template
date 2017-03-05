@@ -140,31 +140,31 @@
       </div>
     </div>
   </div>
-  <h1 class="main-title">Animal Sighting Logbook</h1>
+  <h1 class="main-title">Trail Musin's</h1>
 
     <div class="form-background">
     <form class="col-xs-7 new-entry hidden" id="create-entry">
       <fieldset class="form-group entry-form-container">
-        <legend>Make a new Logbook Entry</legend>
+        <legend>Write A new Musin' </legend>
         <div class="col-sm-8 left-column-entry">
         <label class="col-sm-12 col-form-label form-inline">
-              Animal Type
+              Trail Name
               <input type="text" class="create-field form-control" name="post[animal_type]">
             </label>
-        <label class="col-sm-12 col-form-label form-inline">
-              Date of Sighting
+        <!-- <label class="col-sm-12 col-form-label form-inline">
+              When D'ja go??
               <input type="date" class="create-field form-control" placeholder="yyyy-mm-dd" name="post[date_seen]">
-            </label>
-        <label class="col-sm-12 col-form-label form-inline">
-              Location
+            </label> -->
+        <!-- <label class="col-sm-12 col-form-label form-inline">
+              Where Wazzit???
               <input type="text" class="create-field form-control" name="post[location]">
-            </label>
+            </label> -->
           </div>
           <div class="col-sm-4">
         <label class="col-sm-12 col-form-label">
-              Animal Description
+              Tell me 'Bout it
             </label>
-        <textarea class="create-field form-control animal-description" rows="3" name="post[description]"></textarea>
+        <textarea class="create-field form-control comment" rows="3" name="post[comment]"></textarea>
       </div>
         <input type="submit" class="form-control btn-success create-entry-button" id="create-entry-button" name="submit" value="Create Entry">
         <div class="create-entry-message"></div>
@@ -173,34 +173,30 @@
 
     <form class="col-xs-7 new-entry hidden" id="update-entry">
       <fieldset class="form-group entry-form-container">
-        <legend>Update an existing Logbook Entry</legend>
+        <legend>Update Yer Musin's</legend>
         <div class="col-sm-8 left-column-entry">
         <label class="col-sm-12 col-form-label form-inline">
               Post ID
               <input type="text" id="updateId" placeholder="Displayed in Entry" class="update-field form-control" name="post[id]">
             </label>
-        <label class="col-sm-12 col-form-label form-inline">
-              Animal Type
-              <input type="text" class="update-field form-control" name="post[animal_type]">
-            </label>
-        <label class="col-sm-12 col-form-label form-inline">
-              Date of Sighting
+        <!-- <label class="col-sm-12 col-form-label form-inline">
+              When D'ja go??
               <input type="date" class="update-field form-control" placeholder="yyyy-mm-dd" name="post[date_seen]">
             </label>
         <label class="col-sm-12 col-form-label form-inline">
-              Location
+            Where Wazzit???
               <input type="text" class="update-field form-control" name="post[location]">
-            </label>
+            </label> -->
           </div>
           <div class="col-sm-4">
         <label class="col-sm-12 col-form-label">
-              Animal Description
+            Tell me 'Bout it
             </label>
-        <textarea class="update-field form-control animal-description" rows="3" name="post[description]"></textarea>
+        <textarea class="update-field form-control comment" rows="3" name="post[comment]"></textarea>
       </div>
       <div class="update-buttons">
         <input type="submit" class="form-control btn-success update-entry-button form-inline" id="update-entry-button" name="submit" value="Update Entry">
-        <button type="button" id="cancel-update" class="btn btn-danger form-control cancel-update form-inline">Cancel Update</button>
+        <button type="button" id="cancel-update" class="btn btn-danger form-control cancel-update form-inline">Nah, Jist Forgetit</button>
         <div class="update-entry-message"></div>
       </div>
       </fieldset>
@@ -208,8 +204,8 @@
     <div id="message-box" class="message-box"></div>
 
     <div class="col-xs-12">
-      <button type="button" id="get-index-button" class="btn btn-primary hidden">Get All Entries</button>
-      <button type="button" id="show-update-form" class="btn btn-primary hidden">Update an Entry</button>
+      <button type="button" id="get-index-button" class="btn btn-primary hidden">Get All the Musin's</button>
+      <button type="button" id="show-update-form" class="btn btn-primary hidden">Update One</button>
 
       <div id="entry-container" class="handlebars-entry-container"></div>
     </div>
