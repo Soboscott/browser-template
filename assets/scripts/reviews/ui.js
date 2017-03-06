@@ -3,29 +3,30 @@
 const indexHandlebars = require('../templates/posts-listing.handlebars');
 
 const success = () => {
-  $('#status-box').text('Action Successful');
+  $('#status-box').text('Nice!');
 };
 
 const indexSuccess = (data) => {
   if (data.posts.length === 0) {
     $('#show-update-form').addClass('hidden');
-    $('#message-box').html("<h3>You don't have any entries!  Please create an entry.</h3>");
+    $('#message-box').html("<h3>Ain't nuthin' thar...Make one.</h3>");
   } else {
     $('#show-update-form').removeClass('hidden');
     $('#message-box').html('');
-  }
-  let postsIndexHtml = indexHandlebars({ posts: data.posts });
+}
+
+let postsIndexHtml = indexHandlebars({ posts: data.posts });
     $('#entry-container').html(postsIndexHtml);
 };
 
 const createSuccess = () => {
-  $('#status-box').text('New Entry Successfully Created');
+  $('#status-box').text('You got it');
   $('.create-entry-message').text('');
   $('.create-field').val('');
 };
 
 const updateSuccess = () => {
-  $('#status-box').text('Entry Successfully Updated');
+  $('#status-box').text('Good Job');
   $('.update-entry-message').text('');
   $('.update-field').val('');
   $('#update-entry').addClass('hidden');

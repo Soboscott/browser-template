@@ -1,0 +1,29 @@
+{{#each reviews as |review|}}
+
+ <!-- Developers, why are we using data-id and not just id? -->
+  <div class="handlebars-container col-xs-4">
+    <h2 class="reviewData" data-id="{{review.id}}">Trail: {{review.name}}</h1>
+    <ul class="entry-text">
+    <!-- <li>
+      Where Wazzit??: {{review.location}}
+  </li> -->
+  <li>
+      When Ja see it??: {{review.date_seen}}
+  </li>
+  <li>
+      Musin's {{review.comment}}
+  </li>
+  <li>
+  <p>review ID: {{review.id}}</p>
+</li>
+<li>
+  <button id="removereview" data-id="{{review.id}}">Delete</button>
+</li>
+  </ul>
+  <button class="deletereviewPrompt" data-id="{{review.id}}">Delete</button>
+  <div class="deleteConfirmation hidden" data-id="{{review.id}}">
+    <p>Are you sure you want to delete this entry?</p>
+  <button id="removereview" data-id="{{review.id}}">Yes, Delete</button></div>
+  </div>
+
+{{/each}}

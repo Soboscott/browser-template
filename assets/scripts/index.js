@@ -6,6 +6,7 @@ const config = require('./config');
 $(() => {
   setAPIOrigin(location, config);
 });
+
 // function addComment(){
 //     let userComment = document.getElementById("userComment").value;
 // 	document.getElementById("ui-state-default").innerHTML = userComment;
@@ -14,6 +15,7 @@ $(() => {
 // const example = require('./example');
 
 // use require without a reference to ensure a file is bundled
+
 const authEvents = require('./auth/events.js');
 const reviewsEvents = require('./reviews/events.js');
 $(() => {
